@@ -1,0 +1,37 @@
+CREATE DATABASE db_imperial_court;
+
+USE db_imperial_court;
+
+create table t_emp
+(
+    emp_id  int primary key auto_increment,
+    emp_name char(100) not null,
+    emp_position char(100) not null,
+    login_account char(100) not null unique,
+    login_password char(100) not null
+);
+
+insert into t_emp(emp_name, emp_position, login_account, login_password)
+values('Henry VIII', 'King', 'henry', '123456'),
+      ('Thomas Wolsey', 'Lord High Chancellor of England', 'wolsey', '123456'),
+      ('Thomas Cromwell', 'Lord Great Chamberlain', 'cromwell', '123456'),
+      ('Thomas More', 'Archbishop of Canterbury', 'more', '123456');
+
+create table t_memorials
+(
+    memo_id int primary key auto_increment,
+    memo_title char(100) not null,
+    memo_content varchar(5000) not null,
+    memo_emp int not null,
+    memo_create_time char(100),
+    feedback_time char(100),
+    feedback_content varchar(1000),
+    memo_status int not null
+);
+
+insert into t_memorials(
+    memo_title, memo_content, memo_emp, memo_create_time, feedback_time, feedback_content, memo_status
+)
+values('War on France', 'Let us start war on France.', 1, '1512-05-07', null, null, 0),
+      ("Annulment of Your Majesty's Marriage", 'I suggest we plea to the pope for the annulment of your marriage to Catherine of Aragon.', 2, '1527-4-14', null, null, 0),
+      ('Oath to the King as Head of the Church of England', 'I refuse to pledge an oath to your majesty as the head of the Church of England.', 3, '1535-6-1', null, null, 0);
